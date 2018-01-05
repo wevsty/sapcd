@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sapcd" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/sapcd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="--bind_addr 0.0.0.0 --realy_port 25" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/sapcd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add library="boost_program_options" />
+			<Add library="boost_thread" />
+			<Add library="boost_system" />
+			<Add library="pthread" />
+		</Linker>
+		<Unit filename="asio_async_tcp_client_template.hpp" />
+		<Unit filename="asio_async_tcp_server_template.hpp" />
+		<Unit filename="async_smtp_scanner.cpp" />
+		<Unit filename="async_smtp_scanner.h" />
+		<Unit filename="list_filter.cpp" />
+		<Unit filename="list_filter.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="proc_limit.cpp" />
+		<Unit filename="proc_limit.h" />
+		<Unit filename="pystring_extend/ConvertUTF.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pystring_extend/ConvertUTF.h" />
+		<Unit filename="pystring_extend/base_string_template.h" />
+		<Unit filename="pystring_extend/data_conv.cpp" />
+		<Unit filename="pystring_extend/data_conv.h" />
+		<Unit filename="pystring_extend/py_string_public_def.h" />
+		<Unit filename="pystring_extend/pystring_class.cpp" />
+		<Unit filename="pystring_extend/pystring_class.h" />
+		<Unit filename="pystring_extend/pystring_function.cpp" />
+		<Unit filename="pystring_extend/pystring_function.h" />
+		<Unit filename="pystring_extend/pystring_utf32_function.cpp" />
+		<Unit filename="pystring_extend/pystring_utf32_function.h" />
+		<Unit filename="smtp_protocol_class.hpp" />
+		<Unit filename="spamd_protocol.hpp" />
+		<Unit filename="std_timer_class.hpp" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

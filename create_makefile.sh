@@ -1,0 +1,1 @@
+cbp2make -in sapcd.cbp -out makefile
