@@ -44,8 +44,10 @@
 		<Unit filename="asio_async_tcp_server_template.hpp" />
 		<Unit filename="async_smtp_scanner.cpp" />
 		<Unit filename="async_smtp_scanner.h" />
-		<Unit filename="list_filter.cpp" />
-		<Unit filename="list_filter.h" />
+		<Unit filename="data_size_list_filter.cpp" />
+		<Unit filename="data_size_list_filter.h" />
+		<Unit filename="ip_list_filter.cpp" />
+		<Unit filename="ip_list_filter.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="proc_limit.cpp" />
 		<Unit filename="proc_limit.h" />
@@ -61,8 +63,10 @@
 		<Unit filename="pystring_extend/pystring_class.h" />
 		<Unit filename="pystring_extend/pystring_function.cpp" />
 		<Unit filename="pystring_extend/pystring_function.h" />
+		<Unit filename="pystring_extend/pystring_function_template.h" />
 		<Unit filename="pystring_extend/pystring_utf32_function.cpp" />
 		<Unit filename="pystring_extend/pystring_utf32_function.h" />
+		<Unit filename="pystring_extend/pystring_utf32_function_template.h" />
 		<Unit filename="smtp_protocol_class.hpp" />
 		<Unit filename="spamd_protocol.hpp" />
 		<Unit filename="std_timer_class.hpp" />

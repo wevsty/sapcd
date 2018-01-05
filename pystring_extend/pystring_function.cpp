@@ -1,5 +1,4 @@
-﻿#include "pystring_function.h"
-#include <algorithm>
+﻿#include <algorithm>
 #include <cctype>
 #include <cstring>
 #include <iostream>
@@ -11,13 +10,13 @@
 #include <stdexcept>//std except
 #include "data_conv.h"
 #include "py_string_public_def.h"
-
+#include "pystring_function.h"
 
 //isdecimal() encode decode
 namespace pystring_function
 {
 	//安全转换unsigned到signed
-	inline long_max_t safe_to_sigend_cast(size_t n_input)
+	long_max_t safe_to_sigend_cast(size_t n_input)
 	{
 		long_max_t n_out = (long_max_t)n_input;
 		assert(n_out >= 0);
@@ -31,7 +30,7 @@ namespace pystring_function
 	}
 
 	//安全转换signed到unsigned
-	inline std::string::size_type safe_to_unsigend_cast(long_max_t n_input)
+	std::string::size_type safe_to_unsigend_cast(long_max_t n_input)
 	{
 		std::string::size_type n_out = (std::string::size_type)n_input;
 		assert(n_out == (long_max_u)n_input);
@@ -45,7 +44,7 @@ namespace pystring_function
 	}
 
 	//调整开始和结束下标，主要用于负数时
-	inline void adjust_indices(long_max_t &start, long_max_t &end, long_max_t &len)
+	void adjust_indices(long_max_t &start, long_max_t &end, long_max_t &len)
 	{
 		if (end > len)
 		{
@@ -67,22 +66,6 @@ namespace pystring_function
 				start = 0;
 			}
 		}
-	}
-
-	//转换类型
-	//convert<string>(10)
-	//convert<int>(string)
-	template<typename out_type, typename in_value>
-	out_type convert_type(const in_value &t)
-	{
-		std::stringstream stream;
-		stream << t;
-		//向流中传值
-		out_type result;
-		//这里存储转换结果
-		stream >> result;
-		//向result中写入值
-		return result;
 	}
 
 	//切片方法

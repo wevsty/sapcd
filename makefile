@@ -40,9 +40,9 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/sapcd
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/pystring_extend/pystring_utf32_function.o $(OBJDIR_DEBUG)/pystring_extend/pystring_function.o $(OBJDIR_DEBUG)/pystring_extend/pystring_class.o $(OBJDIR_DEBUG)/pystring_extend/data_conv.o $(OBJDIR_DEBUG)/pystring_extend/ConvertUTF.o $(OBJDIR_DEBUG)/proc_limit.o $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/ip_list_filter.o $(OBJDIR_DEBUG)/data_size_list_filter.o $(OBJDIR_DEBUG)/async_smtp_scanner.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/pystring_extend/data_conv.o $(OBJDIR_DEBUG)/pystring_extend/pystring_utf32_function.o $(OBJDIR_DEBUG)/pystring_extend/pystring_function.o $(OBJDIR_DEBUG)/pystring_extend/pystring_class.o $(OBJDIR_DEBUG)/pystring_extend/ConvertUTF.o $(OBJDIR_DEBUG)/proc_limit.o $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/ip_list_filter.o $(OBJDIR_DEBUG)/data_size_list_filter.o $(OBJDIR_DEBUG)/async_smtp_scanner.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/pystring_extend/pystring_utf32_function.o $(OBJDIR_RELEASE)/pystring_extend/pystring_function.o $(OBJDIR_RELEASE)/pystring_extend/pystring_class.o $(OBJDIR_RELEASE)/pystring_extend/data_conv.o $(OBJDIR_RELEASE)/pystring_extend/ConvertUTF.o $(OBJDIR_RELEASE)/proc_limit.o $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/ip_list_filter.o $(OBJDIR_RELEASE)/data_size_list_filter.o $(OBJDIR_RELEASE)/async_smtp_scanner.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/pystring_extend/data_conv.o $(OBJDIR_RELEASE)/pystring_extend/pystring_utf32_function.o $(OBJDIR_RELEASE)/pystring_extend/pystring_function.o $(OBJDIR_RELEASE)/pystring_extend/pystring_class.o $(OBJDIR_RELEASE)/pystring_extend/ConvertUTF.o $(OBJDIR_RELEASE)/proc_limit.o $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/ip_list_filter.o $(OBJDIR_RELEASE)/data_size_list_filter.o $(OBJDIR_RELEASE)/async_smtp_scanner.o
 
 all: debug release
 
@@ -60,6 +60,9 @@ debug: before_debug out_debug after_debug
 out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
 
+$(OBJDIR_DEBUG)/pystring_extend/data_conv.o: pystring_extend/data_conv.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c pystring_extend/data_conv.cpp -o $(OBJDIR_DEBUG)/pystring_extend/data_conv.o
+
 $(OBJDIR_DEBUG)/pystring_extend/pystring_utf32_function.o: pystring_extend/pystring_utf32_function.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c pystring_extend/pystring_utf32_function.cpp -o $(OBJDIR_DEBUG)/pystring_extend/pystring_utf32_function.o
 
@@ -68,9 +71,6 @@ $(OBJDIR_DEBUG)/pystring_extend/pystring_function.o: pystring_extend/pystring_fu
 
 $(OBJDIR_DEBUG)/pystring_extend/pystring_class.o: pystring_extend/pystring_class.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c pystring_extend/pystring_class.cpp -o $(OBJDIR_DEBUG)/pystring_extend/pystring_class.o
-
-$(OBJDIR_DEBUG)/pystring_extend/data_conv.o: pystring_extend/data_conv.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c pystring_extend/data_conv.cpp -o $(OBJDIR_DEBUG)/pystring_extend/data_conv.o
 
 $(OBJDIR_DEBUG)/pystring_extend/ConvertUTF.o: pystring_extend/ConvertUTF.c
 	$(CC) $(CFLAGS_DEBUG) $(INC_DEBUG) -c pystring_extend/ConvertUTF.c -o $(OBJDIR_DEBUG)/pystring_extend/ConvertUTF.o
@@ -108,6 +108,9 @@ release: before_release out_release after_release
 out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
+$(OBJDIR_RELEASE)/pystring_extend/data_conv.o: pystring_extend/data_conv.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c pystring_extend/data_conv.cpp -o $(OBJDIR_RELEASE)/pystring_extend/data_conv.o
+
 $(OBJDIR_RELEASE)/pystring_extend/pystring_utf32_function.o: pystring_extend/pystring_utf32_function.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c pystring_extend/pystring_utf32_function.cpp -o $(OBJDIR_RELEASE)/pystring_extend/pystring_utf32_function.o
 
@@ -116,9 +119,6 @@ $(OBJDIR_RELEASE)/pystring_extend/pystring_function.o: pystring_extend/pystring_
 
 $(OBJDIR_RELEASE)/pystring_extend/pystring_class.o: pystring_extend/pystring_class.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c pystring_extend/pystring_class.cpp -o $(OBJDIR_RELEASE)/pystring_extend/pystring_class.o
-
-$(OBJDIR_RELEASE)/pystring_extend/data_conv.o: pystring_extend/data_conv.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c pystring_extend/data_conv.cpp -o $(OBJDIR_RELEASE)/pystring_extend/data_conv.o
 
 $(OBJDIR_RELEASE)/pystring_extend/ConvertUTF.o: pystring_extend/ConvertUTF.c
 	$(CC) $(CFLAGS_RELEASE) $(INC_RELEASE) -c pystring_extend/ConvertUTF.c -o $(OBJDIR_RELEASE)/pystring_extend/ConvertUTF.o

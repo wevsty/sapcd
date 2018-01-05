@@ -1,10 +1,4 @@
-﻿#if defined(_MSC_VER)
-#pragma once
-#endif
-#ifndef __PYTHON_STRING_UFT32_HPP__
-#define __PYTHON_STRING_UFT32_HPP__
-#include "pystring_utf32_function.h"
-#include <algorithm>
+﻿#include <algorithm>
 #include <cctype>
 #include <cstring>
 #include <iostream>
@@ -16,11 +10,13 @@
 #include <stdexcept>//std except
 #include "data_conv.h"
 #include "py_string_public_def.h"
+#include "pystring_utf32_function.h"
+
 //isdecimal() encode decode
-namespace pystring_utf32
+namespace pystring_utf32_function
 {
 	//安全转换unsigned到signed
-	inline long_max_t safe_to_sigend_cast(size_t n_input)
+	long_max_t safe_to_sigend_cast(size_t n_input)
 	{
 		long_max_t n_out = (long_max_t)n_input;
 		assert(n_out >= 0);
@@ -34,7 +30,7 @@ namespace pystring_utf32
 	}
 
 	//安全转换signed到unsigned
-	inline std::u32string::size_type safe_to_unsigend_cast(long_max_t n_input)
+	std::u32string::size_type safe_to_unsigend_cast(long_max_t n_input)
 	{
 		std::u32string::size_type n_out = (std::u32string::size_type)n_input;
 		assert(n_out == (long_max_u)n_input);
@@ -48,7 +44,7 @@ namespace pystring_utf32
 	}
 
 	//调整开始和结束下标，主要用于负数时
-	inline void adjust_indices(long_max_t &start, long_max_t &end, long_max_t &len)
+	void adjust_indices(long_max_t &start, long_max_t &end, long_max_t &len)
 	{
 		if (end > len)
 		{
@@ -993,7 +989,7 @@ namespace pystring_utf32
 	std::u32string lower(const std::u32string &str)
 	{
 		std::u32string str_ret(str);
-		std::transform(str_ret.begin(), str_ret.end(), str_ret.begin(), pystring_utf32::ch_tolower);
+		std::transform(str_ret.begin(), str_ret.end(), str_ret.begin(), pystring_utf32_function::ch_tolower);
 		return str_ret;
 	}
 
@@ -1001,7 +997,7 @@ namespace pystring_utf32
 	std::u32string upper(const std::u32string &str)
 	{
 		std::u32string str_ret(str);
-		std::transform(str_ret.begin(), str_ret.end(), str_ret.begin(), pystring_utf32::ch_toupper);
+		std::transform(str_ret.begin(), str_ret.end(), str_ret.begin(), pystring_utf32_function::ch_toupper);
 		return str_ret;
 	}
 
@@ -1212,5 +1208,3 @@ namespace pystring_utf32
 	}
 }
 
-
-#endif // !__PYTHON_STRING_UFT32_HPP__

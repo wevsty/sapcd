@@ -372,16 +372,22 @@ void smtp_scanner_server_session::handle_protocol_read(boost::shared_ptr<char>
 			//判断IP是否需要过滤
 			b_discard = conf_session_ip_filter.is_will_discard(pystr_ip);
 			conf_session_ip_filter.push(pystr_ip);
-			//判断大小是否需要过滤
-			size_t n_data_size = smtp_protocol.smtp_info.session_data.size();
-			b_discard |= conf_session_data_size_filter.is_will_discard(n_data_size);
-			conf_session_data_size_filter.push(n_data_size);
 		}
 		if (b_discard == true)
 		{
 			nowait_send_reply(str_ret);
 			return;
 		}
+		//判断大小是否需要过滤
+		size_t n_data_size = smtp_protocol.smtp_info.session_data.size();
+		b_discard |= conf_session_data_size_filter.is_will_discard(n_data_size);
+		conf_session_data_size_filter.push(n_data_size);
+		if (b_discard == true)
+		{
+			nowait_send_reply(str_ret);
+			return;
+		}
+
 		//async_tcp_client模板是不能创建在栈上的必须new
 		boost::shared_ptr<async_spamd_client> spamd_client_ptr(
 			new async_spamd_client(get_io_service(), smtp_protocol.smtp_info)

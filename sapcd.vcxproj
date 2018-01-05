@@ -107,7 +107,9 @@
     <ClInclude Include="pystring_extend\data_conv.h" />
     <ClInclude Include="pystring_extend\pystring_class.h" />
     <ClInclude Include="pystring_extend\pystring_function.h" />
+    <ClInclude Include="pystring_extend\pystring_function_template.h" />
     <ClInclude Include="pystring_extend\pystring_utf32_function.h" />
+    <ClInclude Include="pystring_extend\pystring_utf32_function_template.h" />
     <ClInclude Include="pystring_extend\py_string_public_def.h" />
     <ClInclude Include="data_size_list_filter.h" />
     <ClInclude Include="smtp_protocol_class.hpp" />
